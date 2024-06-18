@@ -1,5 +1,6 @@
 package com.kk3223.app.student;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Calendar;
 import java.util.List;
 
@@ -19,6 +20,12 @@ public class StudentController {
 	
 	@RequestMapping("/student/list")
 	public String getStudents(HttpServletRequest request) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		List<StudentDTO> sDTOs = this.studentService.getStudents();
 		if (sDTOs != null) {
 			request.setAttribute("list", sDTOs);
@@ -36,6 +43,12 @@ public class StudentController {
 	
 	@RequestMapping(value="/student/add", method=RequestMethod.POST)
 	public String add2(HttpServletRequest request) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		StudentDTO sDTO = new StudentDTO();
 		String name = request.getParameter("name");
 		Calendar ca = Calendar.getInstance();
@@ -62,6 +75,12 @@ public class StudentController {
 	
 	@RequestMapping(value="/student/delete", method=RequestMethod.POST)
 	public String delete2(HttpServletRequest request) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		StudentDTO sDTO = new StudentDTO();
 		sDTO.setNum(Long.parseLong(request.getParameter("num")));
 		studentService.delete(sDTO);
@@ -70,6 +89,12 @@ public class StudentController {
 	
 	@RequestMapping("/student/detail")
 	public String getDetail(HttpServletRequest request) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		StudentDTO sDTO = new StudentDTO();
 		sDTO.setNum(Long.parseLong(request.getParameter("num")));
 		sDTO = studentService.getDetail(sDTO);
@@ -84,6 +109,12 @@ public class StudentController {
 	
 	@RequestMapping(value="/student/update", method=RequestMethod.GET)
 	public String update(HttpServletRequest request) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		StudentDTO sDTO = new StudentDTO();
 		sDTO.setNum(Long.parseLong(request.getParameter("num")));
 		sDTO = studentService.getDetail(sDTO);
@@ -93,6 +124,12 @@ public class StudentController {
 	
 	@RequestMapping(value="/student/update", method=RequestMethod.POST)
 	public String update2(HttpServletRequest request) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		StudentDTO sDTO = new StudentDTO();
 		sDTO.setNum(Long.parseLong(request.getParameter("num")));
 		sDTO.setName(request.getParameter("name"));
